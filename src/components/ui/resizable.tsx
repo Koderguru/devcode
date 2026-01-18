@@ -9,22 +9,27 @@ import { cn } from "@/lib/utils"
 function ResizablePanelGroup({
   className,
   direction = "horizontal",
+  children,
   ...props
-}: Omit<React.ComponentProps<typeof Group>, "orientation"> & {
+}: {
+  className?: string
   direction?: "horizontal" | "vertical"
+  children?: React.ReactNode
+  [key: string]: any
 }) {
   return (
     <Group
       data-slot="resizable-panel-group"
-      orientation={direction}
-      data-panel-group-direction={direction}
+      orientation={direction === "vertical" ? "vertical" : "horizontal"}
       className={cn(
-        // min-w-0 prevents child panels from overflowing their flex container
-        "flex h-full w-full min-w-0 min-h-0 data-[panel-group-direction=vertical]:flex-col",
+        "flex h-full w-full min-w-0 min-h-0",
+        direction === "vertical" ? "flex-col" : "flex-row",
         className
       )}
       {...props}
-    />
+    >
+      {children}
+    </Group>
   )
 }
 
