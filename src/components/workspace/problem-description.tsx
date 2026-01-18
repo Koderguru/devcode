@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button"
 export function ProblemDescription() {
   return (
     <div className="flex flex-col h-full bg-background">
-      <Tabs defaultValue="description" className="w-full flex flex-col h-full">
-        <div className="px-4 border-b bg-muted/20 shrink-0">
+      <Tabs defaultValue="description" className="flex flex-col h-full">
+        <div className="px-4 border-b bg-muted/20">
             <TabsList className="h-9 w-full justify-start bg-transparent p-0 gap-6">
                <TabsTrigger value="description" className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:font-medium data-[state=active]:text-foreground bg-transparent text-muted-foreground h-full rounded-none border-b-2 border-transparent data-[state=active]:border-primary transition-none px-0 text-xs">
                   <span className="flex items-center gap-2">
@@ -37,7 +37,7 @@ export function ProblemDescription() {
             </TabsList>
         </div>
 
-        <TabsContent value="description" className="flex-1 p-0 m-0 overflow-hidden data-[state=inactive]:hidden focus-visible:outline-none">
+        <TabsContent value="description" className="flex-1 p-0 m-0 overflow-hidden focus-visible:outline-none">
             <ScrollArea className="h-full">
                 <div className="p-5 space-y-6 max-w-4xl pb-20">
                     <div>
