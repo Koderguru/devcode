@@ -19,7 +19,8 @@ function ResizablePanelGroup({
       orientation={direction}
       data-panel-group-direction={direction}
       className={cn(
-        "flex h-full w-full data-[panel-group-direction=vertical]:flex-col",
+        // min-w-0 prevents child panels from overflowing their flex container
+        "flex h-full w-full min-w-0 min-h-0 data-[panel-group-direction=vertical]:flex-col",
         className
       )}
       {...props}
@@ -30,7 +31,9 @@ function ResizablePanelGroup({
 function ResizablePanel({
   ...props
 }: React.ComponentProps<typeof Panel>) {
-  return <Panel data-slot="resizable-panel" {...props} />
+  // ensure panel itself can shrink in a flex container
+  const className = cn("min-w-0 min-h-0", (props as any).className)
+  return <Panel data-slot="resizable-panel" className={className} {...props} />
 }
 
 function ResizableHandle({
